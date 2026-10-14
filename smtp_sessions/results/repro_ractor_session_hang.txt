@@ -1,0 +1,5 @@
+ct,iot,body4k: ok=10 travou=0 de 10
+iot,body4k: ok=10 travou=0 de 10
+ct,iot: ok=10 travou=0 de 10
+ct: ok=10 travou=0 de 10
+none: ok=10 travou=0 de 10

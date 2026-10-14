@@ -1,0 +1,3 @@
+scenario,delay_ms,ops,mode,workers,reps,all_valid,errors,timeouts,completed_median,tasks,total_median_s,total_min_s,total_max_s,process_median_s,process_min_s,process_max_s,startup_median_ms,startup_max_ms,shutdown_median_ms,throughput_median,task_p50_ms,task_p95_ms,cpu_util_median,peak_rss_mb,server_max_concurrent,speedup_vs_seq
+io_sleep_simulation,10,2000,ractors,128,5,true,0,0,2000,2000,0.187385,0.186095,0.188973,0.181523,0.180293,0.182509,5.73624,6.426949,0.498741,11017.911091,10.918075,12.228617,0.952658,22.929688,,
+io_sleep_simulation,10,2000,ractors,256,5,true,0,0,2000,2000,0.14724,0.139351,0.170422,0.135692,0.128476,0.156879,10.581998,12.849802,0.760259,14739.225298,14.98284,17.904498,1.391955,25.710938,,

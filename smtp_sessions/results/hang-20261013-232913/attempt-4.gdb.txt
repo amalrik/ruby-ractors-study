@@ -1,0 +1,422 @@
+
+This GDB supports auto-downloading debuginfo from the following URLs:
+  <https://debuginfod.archlinux.org>
+Enable debuginfod for this session? (y or [n]) [answered N; input not from terminal]
+Debuginfod has been disabled.
+To make this setting permanent, add 'set debuginfod enabled off' to .gdbinit.
+[Thread debugging using libthread_db enabled]
+Using host libthread_db library "/usr/lib/libthread_db.so.1".
+~/Code/personal/concurency-poc/common/lib/bench_common/pools.rb:138: warning: Ractor API is experimental and may change in future versions of Ruby.
+{"scenario":"smtp_like_sessions","workload":"session","mode":"ractors","workers":8,"ops":300,"delay_ms":10,"body_bytes":4134,"ractors":null,"rep":"warmup","warmup":true,"tasks":300,"completed":300,"errors":0,"timeouts":0,"valid":true,"validation":"sessões=300/300 erros=0 ids_ok=true","startup_s":0.002599270002974663,"process_s":4.308588833002432,"shutdown_s":0.00013985099940327927,"total_s":4.31132795400481,"throughput_per_s":69.62836595176931,"task_p50_ms":113.12379150331253,"task_p95_ms":114.41615559961065,"task_p99_ms":114.80163385014748,"task_max_ms":115.0254739986849,"cpu_s":0.19306700000000002,"cpu_util":0.044781330035600586,"rss_kb_after":27028,"sample_errors":[]}
+
+Thread 1 "ruby" received signal SIGINT, Interrupt.
+0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+=== AMOSTRA 1 ===
+  Id   Target Id                                  Frame 
+* 1    Thread 0x7ffff7e15800 (LWP 1822005) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  2    Thread 0x7fffde1ff6c0 (LWP 1822009) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  3    Thread 0x7fffbbfff6c0 (LWP 1822055) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  4    Thread 0x7fffbbefe6c0 (LWP 1822056) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  5    Thread 0x7fffbbdfd6c0 (LWP 1822057) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  6    Thread 0x7fffbbcfc6c0 (LWP 1822058) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  7    Thread 0x7fffbbbfb6c0 (LWP 1822059) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  8    Thread 0x7fffbbafa6c0 (LWP 1822060) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  9    Thread 0x7fffbb9f96c0 (LWP 1822061) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  10   Thread 0x7fffbb8f86c0 (LWP 1822062) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+
+Thread 10 (Thread 0x7fffbb8f86c0 (LWP 1822062) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc6035d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc6037f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc6037f0, events=1, fptr=0x7fff9c00b630, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc6037f0, events=1, error=0, fptr=0x7fff9c00b630, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc603800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fff9c00b630, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc603800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbc603800, function=0x5555555ec770 <internal_read_func>, io=0x7fff9c00b630) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fff9c00b630, buf=0x7fff9c001b10, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fff9c00b630) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fff9c00b630) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fff9c00b630) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736886668160, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736886668160, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736886668160) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x55555608fd40, reg_cfp=0x7fffbc502ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbc6035d0, ec@entry=0x55555608fd40) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbc603ca0, state=<optimized out>, ec=0x55555608fd40) at vm.c:2825
+#20 rb_vm_exec (ec=0x55555608fd40) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555566f1470) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555566f1470) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555566f1470, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555566f1470) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x5555565c7010) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 9 (Thread 0x7fffbb9f96c0 (LWP 1822061) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc8045d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc8047f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc8047f0, events=1, fptr=0x7fffa8009a60, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc8047f0, events=1, error=0, fptr=0x7fffa8009a60, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc804800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa8009a60, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc804800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbc804800, function=0x5555555ec770 <internal_read_func>, io=0x7fffa8009a60) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffa8009a60, buf=0x7fffa8009b60, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffa8009a60) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffa8009a60) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffa8009a60) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736886076760, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736886076760, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736886076760) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x555556553d50, reg_cfp=0x7fffbc703ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbc8045d0, ec@entry=0x555556553d50) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbc804ca0, state=<optimized out>, ec=0x555556553d50) at vm.c:2825
+#20 rb_vm_exec (ec=0x555556553d50) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555564b15d0) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555564b15d0) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555564b15d0, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555564b15d0) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x5555566365f0) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 8 (Thread 0x7fffbbafa6c0 (LWP 1822060) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbd0085d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbd0087f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbd0087f0, events=1, fptr=0x7fff9400ad40, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbd0087f0, events=1, error=0, fptr=0x7fff9400ad40, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbd008800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fff9400ad40, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbd008800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbd008800, function=0x5555555ec770 <internal_read_func>, io=0x7fff9400ad40) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fff9400ad40, buf=0x7fff94000b80, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fff9400ad40) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fff9400ad40) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fff9400ad40) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736887422280, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736887422280, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736887422280) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x555556545a80, reg_cfp=0x7fffbcf07ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbd0085d0, ec@entry=0x555556545a80) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbd008ca0, state=<optimized out>, ec=0x555556545a80) at vm.c:2825
+#20 rb_vm_exec (ec=0x555556545a80) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555565951d0) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555565951d0) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555565951d0, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555565951d0) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x555556588f70) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 7 (Thread 0x7fffbbbfb6c0 (LWP 1822059) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbca055d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbca057f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbca057f0, events=1, fptr=0x7fffa0001580, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbca057f0, events=1, error=0, fptr=0x7fffa0001580, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbca05800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa0001580, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbca05800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbca05800, function=0x5555555ec770 <internal_read_func>, io=0x7fffa0001580) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffa0001580, buf=0x7fffa0003070, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffa0001580) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffa0001580) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffa0001580) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736886536240, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736886536240, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736886536240) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x5555565572d0, reg_cfp=0x7fffbc904ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbca055d0, ec@entry=0x5555565572d0) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbca05ca0, state=<optimized out>, ec=0x5555565572d0) at vm.c:2825
+#20 rb_vm_exec (ec=0x5555565572d0) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555566ad390) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555566ad390) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555566ad390, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555566ad390) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x5555565953f0) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 6 (Thread 0x7fffbbcfc6c0 (LWP 1822058) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc2015d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc2017f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc2017f0, events=1, fptr=0x7fffa40011b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc2017f0, events=1, error=0, fptr=0x7fffa40011b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc201800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa40011b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc201800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbc201800, function=0x5555555ec770 <internal_read_func>, io=0x7fffa40011b0) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffa40011b0, buf=0x7fffa40030e0, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffa40011b0) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffa40011b0) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffa40011b0) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736885680800, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736885680800, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736885680800) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x5555566a73d0, reg_cfp=0x7fffbc100ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbc2015d0, ec@entry=0x5555566a73d0) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbc201ca0, state=<optimized out>, ec=0x5555566a73d0) at vm.c:2825
+#20 rb_vm_exec (ec=0x5555566a73d0) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x555556547800) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x555556547800) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x555556547800, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x555556547800) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x555556597170) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 5 (Thread 0x7fffbbdfd6c0 (LWP 1822057) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbcc065d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbcc067f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbcc067f0, events=1, fptr=0x7fffb00011b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbcc067f0, events=1, error=0, fptr=0x7fffb00011b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbcc06800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffb00011b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbcc06800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbcc06800, function=0x5555555ec770 <internal_read_func>, io=0x7fffb00011b0) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffb00011b0, buf=0x7fffb00030c0, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffb00011b0) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffb00011b0) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffb00011b0) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736886797680, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736886797680, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736886797680) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x555556524d40, reg_cfp=0x7fffbcb05ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbcc065d0, ec@entry=0x555556524d40) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbcc06ca0, state=<optimized out>, ec=0x555556524d40) at vm.c:2825
+#20 rb_vm_exec (ec=0x555556524d40) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x555556095270) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x555556095270) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x555556095270, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x555556095270) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x555556585140) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 4 (Thread 0x7fffbbefe6c0 (LWP 1822056) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc4025d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc4027f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc4027f0, events=1, fptr=0x7fffac0053b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc4027f0, events=1, error=0, fptr=0x7fffac0053b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc402800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffac0053b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc402800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbc402800, function=0x5555555ec770 <internal_read_func>, io=0x7fffac0053b0) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffac0053b0, buf=0x7fffac000e80, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffac0053b0) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffac0053b0) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffac0053b0) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736887322200, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736887322200, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736887322200) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x5555566a3760, reg_cfp=0x7fffbc301ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbc4025d0, ec@entry=0x5555566a3760) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbc402ca0, state=<optimized out>, ec=0x5555566a3760) at vm.c:2825
+#20 rb_vm_exec (ec=0x5555566a3760) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555565be860) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555565be860) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555565be860, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555565be860) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x55555658f5c0) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 3 (Thread 0x7fffbbfff6c0 (LWP 1822055) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbce075d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbce077f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbce077f0, events=1, fptr=0x7fffb400ae80, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbce077f0, events=1, error=0, fptr=0x7fffb400ae80, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbce07800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffb400ae80, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbce07800, events=events@entry=1) at thread.c:1986
+#8  0x00005555555edd84 in rb_io_blocking_region_wait (events=RUBY_IO_READABLE, argument=0x7fffbce07800, function=0x5555555ec770 <internal_read_func>, io=0x7fffb400ae80) at io.c:228
+#9  rb_io_read_memory (fptr=fptr@entry=0x7fffb400ae80, buf=0x7fffb4000e80, count=8192) at io.c:1322
+#10 0x00005555555f2720 in io_fillbuf (fptr=0x7fffb400ae80) at io.c:2665
+#11 0x00005555555f571d in rb_io_getline_fast (chomp=0, enc=0x555555c92250, fptr=0x7fffb400ae80) at io.c:4083
+#12 rb_io_getline_0 (rs=rs@entry=140737350633920, limit=<optimized out>, chomp=0, fptr=fptr@entry=0x7fffb400ae80) at io.c:4197
+#13 0x00005555555f646c in rb_io_getline_1 (io=140736887383040, chomp=<optimized out>, limit=<optimized out>, rs=<optimized out>) at io.c:4302
+#14 rb_io_getline (io=140736887383040, argv=<optimized out>, argc=<optimized out>) at io.c:4322
+#15 rb_io_gets_m (argc=<optimized out>, argv=<optimized out>, io=140736887383040) at io.c:4422
+#16 0x000055555577fc8d in vm_call_cfunc_with_frame_ (ec=0x555556535910, reg_cfp=0x7fffbcd06ee8, calling=<optimized out>, argc=<optimized out>, argv=<optimized out>, stack_bottom=<optimized out>) at vm_insnhelper.c:3912
+#17 0x000055555579405a in vm_sendish (method_explorer=<optimized out>, block_handler=<optimized out>, cd=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_callinfo.h:464
+#18 vm_exec_core (ec=0x7fffbce075d0, ec@entry=0x555556535910) at insns.def:904
+#19 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffbce07ca0, state=<optimized out>, ec=0x555556535910) at vm.c:2825
+#20 rb_vm_exec (ec=0x555556535910) at vm.c:2804
+#21 0x0000555555784028 in invoke_iseq_block_from_c (me=0x0, is_lambda=<optimized out>, cref=0x0, passed_block_handler=0, kw_splat=<optimized out>, argv=<optimized out>, argc=<optimized out>, self=<optimized out>, captured=<optimized out>, ec=<optimized out>) at vm.c:1820
+#22 0x00005555557849f8 in rb_vm_invoke_proc_with_self (ec=<optimized out>, proc=<optimized out>, self=<optimized out>, argc=<optimized out>, argv=<optimized out>, kw_splat=<optimized out>, passed_block_handler=0) at vm.c:1979
+#23 0x000055555572f266 in thread_do_start_proc (th=th@entry=0x5555565c6c20) at thread.c:604
+#24 0x00005555557313ae in thread_do_start (th=0x5555565c6c20) at thread.c:646
+#25 thread_start_func_2 (th=th@entry=0x5555565c6c20, stack_start=<optimized out>) at thread.c:697
+#26 0x00005555557316d9 in call_thread_start_func_2 (th=0x5555565c6c20) at thread_pthread.c:2285
+#27 co_start (from=<optimized out>, self=0x5555565fa9f0) at thread_pthread_mn.c:476
+#28 0x0000000000000000 in ?? ()
+
+Thread 2 (Thread 0x7fffde1ff6c0 (LWP 1822009) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b20bcb in epoll_wait () from /./lib/libc.so.6
+#2  0x000055555573239d in event_wait (vm=0x555555c89370) at thread_pthread.c:2989
+#3  timer_thread_polling (vm=0x555555c89370) at thread_pthread_mn.c:936
+#4  timer_thread_func (ptr=<optimized out>) at thread_pthread.c:3124
+#5  0x00007ffff7a98042 in ?? () from /./lib/libc.so.6
+#6  0x00007ffff7b2072c in ?? () from /./lib/libc.so.6
+
+Thread 1 (Thread 0x7ffff7e15800 (LWP 1822005) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7a94c79 in ?? () from /./lib/libc.so.6
+#2  0x00007ffff7a974ec in pthread_cond_wait () from /./lib/libc.so.6
+#3  0x000055555572a98c in rb_native_cond_wait (mutex=0x555555c90a08, cond=0x555555c908d8) at thread_pthread.c:231
+#4  thread_sched_wait_running_turn (sched=sched@entry=0x555555c90a08, th=0x555555c8b8d0, can_direct_transfer=can_direct_transfer@entry=false) at thread_pthread.c:882
+#5  0x000055555572d6f1 in rb_ractor_sched_wait (ec=ec@entry=0x555555c90bf0, cr=cr@entry=0x555555c90930, ubf=ubf@entry=0x555555675ad0 <ubf_ractor_wait>, ubf_arg=ubf_arg@entry=0x7fffffffb580) at thread_pthread.c:1410
+#6  0x0000555555676998 in ractor_wait (cr=0x555555c90930, ec=0x555555c90bf0) at ractor_sync.c:1051
+#7  ractor_wait_receive (ec=ec@entry=0x555555c90bf0, cr=cr@entry=0x555555c90930) at ractor_sync.c:1118
+#8  0x00005555556797e0 in ractor_receive (rp=<optimized out>, ec=<optimized out>) at ractor_sync.c:1171
+#9  ractor_port_receive (self=<optimized out>, ec=0x555555c90bf0) at ractor_sync.c:143
+#10 builtin_inline_class_742 (ec=0x555555c90bf0, self=<optimized out>) at ractor.rb:743
+#11 0x00005555557958a1 in invoke_bf (argv=<optimized out>, bf=<optimized out>, reg_cfp=<optimized out>, ec=<optimized out>) at vm_insnhelper.c:7563
+#12 vm_invoke_builtin_delegate (cfp=<optimized out>, bf=<optimized out>, cfp=<optimized out>, bf=<optimized out>, start_index=<optimized out>, ec=<optimized out>) at vm_insnhelper.c:7587
+#13 vm_invoke_builtin_delegate (start_index=<optimized out>, bf=<optimized out>, cfp=<optimized out>, ec=<optimized out>) at vm_insnhelper.c:7575
+#14 vm_exec_core (ec=0x555555c908fc, ec@entry=0x555555c90bf0) at insns.def:1691
+#15 0x0000555555783db8 in vm_exec_loop (result=<optimized out>, tag=0x7fffffffb880, state=<optimized out>, ec=0x555555c90bf0) at vm.c:2825
+#16 rb_vm_exec (ec=0x555555c90bf0) at vm.c:2804
+#17 0x000055555579b1b0 in rb_iseq_eval_main (iseq=<optimized out>) at vm.c:3064
+#18 0x00005555555a6e33 in rb_ec_exec_node (ec=ec@entry=0x555555c90bf0, n=0x7fffdc4ba198) at eval.c:294
+#19 0x00005555555a9e98 in ruby_run_node (n=<optimized out>) at eval.c:332
+#20 0x00005555555a45e3 in rb_main (argv=0x7fffffffbb68, argc=10) at ./main.c:42
+#21 main (argc=<optimized out>, argv=<optimized out>) at ./main.c:62
+
+Thread 1 "ruby" received signal SIGINT, Interrupt.
+0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+=== AMOSTRA 2 (5 s depois) ===
+  Id   Target Id                                  Frame 
+* 1    Thread 0x7ffff7e15800 (LWP 1822005) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  2    Thread 0x7fffde1ff6c0 (LWP 1822009) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  3    Thread 0x7fffbbfff6c0 (LWP 1822055) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  4    Thread 0x7fffbbefe6c0 (LWP 1822056) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  5    Thread 0x7fffbbdfd6c0 (LWP 1822057) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  6    Thread 0x7fffbbcfc6c0 (LWP 1822058) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  7    Thread 0x7fffbbbfb6c0 (LWP 1822059) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  8    Thread 0x7fffbbafa6c0 (LWP 1822060) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  9    Thread 0x7fffbb9f96c0 (LWP 1822061) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+  10   Thread 0x7fffbb8f86c0 (LWP 1822062) "ruby" 0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+
+Thread 10 (Thread 0x7fffbb8f86c0 (LWP 1822062) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc6035d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc6037f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc6037f0, events=1, fptr=0x7fff9c00b630, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc6037f0, events=1, error=0, fptr=0x7fff9c00b630, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc603800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fff9c00b630, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc603800, events=events@entry=1) at thread.c:1986
+
+Thread 9 (Thread 0x7fffbb9f96c0 (LWP 1822061) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc8045d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc8047f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc8047f0, events=1, fptr=0x7fffa8009a60, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc8047f0, events=1, error=0, fptr=0x7fffa8009a60, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc804800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa8009a60, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc804800, events=events@entry=1) at thread.c:1986
+
+Thread 8 (Thread 0x7fffbbafa6c0 (LWP 1822060) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbd0085d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbd0087f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbd0087f0, events=1, fptr=0x7fff9400ad40, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbd0087f0, events=1, error=0, fptr=0x7fff9400ad40, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbd008800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fff9400ad40, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbd008800, events=events@entry=1) at thread.c:1986
+
+Thread 7 (Thread 0x7fffbbbfb6c0 (LWP 1822059) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbca055d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbca057f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbca057f0, events=1, fptr=0x7fffa0001580, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbca057f0, events=1, error=0, fptr=0x7fffa0001580, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbca05800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa0001580, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbca05800, events=events@entry=1) at thread.c:1986
+
+Thread 6 (Thread 0x7fffbbcfc6c0 (LWP 1822058) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc2015d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc2017f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc2017f0, events=1, fptr=0x7fffa40011b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc2017f0, events=1, error=0, fptr=0x7fffa40011b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc201800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffa40011b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc201800, events=events@entry=1) at thread.c:1986
+
+Thread 5 (Thread 0x7fffbbdfd6c0 (LWP 1822057) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbcc065d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbcc067f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbcc067f0, events=1, fptr=0x7fffb00011b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbcc067f0, events=1, error=0, fptr=0x7fffb00011b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbcc06800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffb00011b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbcc06800, events=events@entry=1) at thread.c:1986
+
+Thread 4 (Thread 0x7fffbbefe6c0 (LWP 1822056) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbc4025d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbc4027f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbc4027f0, events=1, fptr=0x7fffac0053b0, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbc4027f0, events=1, error=0, fptr=0x7fffac0053b0, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbc402800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffac0053b0, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbc402800, events=events@entry=1) at thread.c:1986
+
+Thread 3 (Thread 0x7fffbbfff6c0 (LWP 1822055) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b112e5 in poll () from /./lib/libc.so.6
+#2  0x00005555555ec972 in poll (__timeout=<optimized out>, __nfds=1, __fds=0x7fffbce075d0) at /usr/include/bits/poll2.h:46
+#3  nogvl_wait_for (fptr=<optimized out>, fptr=<optimized out>, th=<optimized out>, timeout=0x7fffbce077f0, events=1) at io.c:12560
+#4  nogvl_wait_for (timeout=0x7fffbce077f0, events=1, fptr=0x7fffb400ae80, th=<optimized out>) at io.c:12537
+#5  io_internal_wait (timeout=0x7fffbce077f0, events=1, error=0, fptr=0x7fffb400ae80, thread=<optimized out>) at io.c:1174
+#6  internal_read_func (ptr=ptr@entry=0x7fffbce07800) at io.c:1202
+#7  0x0000555555734865 in rb_thread_io_blocking_call (io=io@entry=0x7fffb400ae80, func=func@entry=0x5555555ec770 <internal_read_func>, data1=data1@entry=0x7fffbce07800, events=events@entry=1) at thread.c:1986
+
+Thread 2 (Thread 0x7fffde1ff6c0 (LWP 1822009) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7b20bcb in epoll_wait () from /./lib/libc.so.6
+#2  0x000055555573239d in event_wait (vm=0x555555c89370) at thread_pthread.c:2989
+#3  timer_thread_polling (vm=0x555555c89370) at thread_pthread_mn.c:936
+#4  timer_thread_func (ptr=<optimized out>) at thread_pthread.c:3124
+#5  0x00007ffff7a98042 in ?? () from /./lib/libc.so.6
+#6  0x00007ffff7b2072c in ?? () from /./lib/libc.so.6
+
+Thread 1 (Thread 0x7ffff7e15800 (LWP 1822005) "ruby"):
+#0  0x00007ffff7aa08f2 in ?? () from /./lib/libc.so.6
+#1  0x00007ffff7a94c79 in ?? () from /./lib/libc.so.6
+#2  0x00007ffff7a974ec in pthread_cond_wait () from /./lib/libc.so.6
+#3  0x000055555572a98c in rb_native_cond_wait (mutex=0x555555c90a08, cond=0x555555c908d8) at thread_pthread.c:231
+#4  thread_sched_wait_running_turn (sched=sched@entry=0x555555c90a08, th=0x555555c8b8d0, can_direct_transfer=can_direct_transfer@entry=false) at thread_pthread.c:882
+#5  0x000055555572d6f1 in rb_ractor_sched_wait (ec=ec@entry=0x555555c90bf0, cr=cr@entry=0x555555c90930, ubf=ubf@entry=0x555555675ad0 <ubf_ractor_wait>, ubf_arg=ubf_arg@entry=0x7fffffffb580) at thread_pthread.c:1410
+#6  0x0000555555676998 in ractor_wait (cr=0x555555c90930, ec=0x555555c90bf0) at ractor_sync.c:1051
+#7  ractor_wait_receive (ec=ec@entry=0x555555c90bf0, cr=cr@entry=0x555555c90930) at ractor_sync.c:1118
+Kill the program being debugged? (y or n) [answered Y; input not from terminal]
+[Inferior 1 (process 1822005) killed]

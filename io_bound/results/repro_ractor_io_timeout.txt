@@ -1,0 +1,10 @@
+Ruby 4.0.6  workers=64 ops=400 delay=10ms  RUBY_MAX_CPU=(padrão)  ideal≈0.074s
+  sem timeout        ractors 0.097s (erros 0) | threads 0.084s (erros 0)
+  connect_timeout:   ractors 0.088s (erros 0) | threads 0.082s (erros 0)
+  wait_readable(5)   ractors 0.555s (erros 0) | threads 0.083s (erros 0)
+  IO#timeout = 5     ractors 0.542s (erros 0) | threads 0.083s (erros 0)
+Ruby 4.0.6  workers=64 ops=400 delay=10ms  RUBY_MAX_CPU=64  ideal≈0.074s
+  sem timeout        ractors 0.099s (erros 0) | threads 0.083s (erros 0)
+  connect_timeout:   ractors 0.106s (erros 0) | threads 0.082s (erros 0)
+  wait_readable(5)   ractors 0.085s (erros 0) | threads 0.081s (erros 0)
+  IO#timeout = 5     ractors 0.084s (erros 0) | threads 0.080s (erros 0)

@@ -1,0 +1,56 @@
+{
+  "captured_at": "2026-10-13T23:16:37Z",
+  "os": "Omarchy",
+  "kernel": "Linux 7.2.8-5-omarchy-bore #1 SMP PREEMPT_DYNAMIC Wed, 07 Oct 2026 02:17:41 +0000 x86_64",
+  "cpu_model": "AMD Ryzen 7 5700U with Radeon Graphics",
+  "logical_cpus": 16,
+  "physical_cores": 8,
+  "mem_total_kb": 32216048,
+  "cpu_governor": "powersave",
+  "cpu_driver": "amd-pstate-epp",
+  "energy_perf_preference": "balance_performance",
+  "loadavg_at_start": "2.42 1.92 1.43 6/2484 1179045",
+  "ruby_description": "ruby 4.0.6 (2026-07-14 revision 03b6d3f889) +PRISM [x86_64-linux]",
+  "ruby_engine": "ruby",
+  "ruby_version": "4.0.6",
+  "ruby_bin": "~/.local/share/mise/installs/ruby/4.0.6/bin/ruby",
+  "ractor_api": {
+    "port": true,
+    "ractor_value": true,
+    "ractor_join": true,
+    "legacy_take_yield": false
+  },
+  "tcp_tw_reuse": "2",
+  "ip_local_port_range": "32768-60999",
+  "somaxconn": "4096",
+  "nofile_limit": 524288,
+  "benchmark": "io_bound",
+  "options": {
+    "workloads": [
+      "tcp",
+      "sleep"
+    ],
+    "ops": 2000,
+    "delay_ms": 10,
+    "workers": [
+      8,
+      32,
+      128,
+      256
+    ],
+    "modes": [
+      "sequential",
+      "threads",
+      "ractors"
+    ],
+    "warmup": 1,
+    "reps": 5,
+    "seq_reps": 3,
+    "prefetch": 1,
+    "yjit": false,
+    "env": {}
+  },
+  "ruby_flags": [],
+  "child_env": {},
+  "command": "io_bound/bin/bench.rb"
+}

@@ -1,0 +1,348 @@
+<internal:ast>:374: [BUG] Segmentation fault at 0x0000000000000030
+ruby 4.1.0preview1 (2026-10-11 master 2d08b5f42f) +PRISM [x86_64-linux]
+
+-- Control frame information -----------------------------------------------
+c:0012 p:0072 s:0087 e:000086 l:y b:0001 r:(nil) METHOD <internal:ast>:374
+c:0011 p:0026 s:0071 e:000070 l:y b:0001 r:(nil) METHOD <internal:ast>:478
+c:0010 p:0012 s:0062 e:000061 l:y b:0001 r:(nil) METHOD ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/base.rb:77
+c:0009 p:0161 s:0056 e:000055 l:y b:0001 r:(nil) METHOD ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/base.rb:57
+c:0008 p:0153 s:0046 e:000045 l:y b:0001 r:(nil) METHOD ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/core_ext.rb:34
+c:0007 p:0028 s:0035 e:000034 l:y b:0001 r:(nil) METHOD ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/core_ext.rb:43 [FINISH]
+c:0006 p:---- s:0026 e:000025 l:y b:0001 r:(nil) CFUNC  :detailed_message
+c:0005 p:0018 s:0021 e:000020 l:n b:---- r:(nil) RESCUE eh/eh.rb:10
+c:0004 p:0024 s:0017 e:000016 l:n b:---- r:(nil) BLOCK  eh/eh.rb:7
+c:0003 p:0024 s:0012 e:000011 l:y b:0001 r:(nil) METHOD <internal:numeric>:262
+c:0002 p:0005 s:0007 e:000006 l:n b:---- r:(nil) BLOCK  eh/eh.rb:6 [FINISH]
+c:0001 p:---- s:0003 e:000002 l:y b:---- r:(nil) DUMMY  [FINISH]
+
+-- Ruby level backtrace information ----------------------------------------
+eh/eh.rb:6:in 'block (2 levels) in <main>'
+<internal:numeric>:262:in 'times'
+eh/eh.rb:7:in 'block (3 levels) in <main>'
+eh/eh.rb:10:in 'rescue in block (3 levels) in <main>'
+eh/eh.rb:10:in 'detailed_message'
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/core_ext.rb:43:in 'detailed_message'
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/core_ext.rb:34:in 'generate_snippet'
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/base.rb:57:in 'spot'
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/base.rb:77:in 'find_node_from_loc'
+<internal:ast>:478:in 'syntax_tree'
+<internal:ast>:374:in 'syntax_tree'
+
+-- Threading information ---------------------------------------------------
+Total ractor count: 2
+Ruby thread count for this ractor: 1
+
+-- Machine register context ------------------------------------------------
+ RIP: 0x00007f11791d0ee6 RBP: 0x00007f115f435ce0 RSP: 0x00007f113d6015d0
+ RAX: 0x0000000000000000 RBX: 0x00005556efb64cb0 RCX: 0x00007f115d640180
+ RDX: 0x00007f115f5008a8 RDI: 0x00007f113d4012b0 RSI: 0x601000000000c11a
+  R8: 0x00007f115d784e00  R9: 0x0000000000000020 R10: 0x000000000000c11a
+ R11: 0x0000000000000000 R12: 0x00007f113d4012b0 R13: 0x00005556efb632f0
+ R14: 0x00007f115d640180 R15: 0x00005556efa8c170 EFL: 0x0000000000010246
+
+-- C level backtrace information -------------------------------------------
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_print_backtrace+0x11) [0x7f117920aaa9] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_dump.c:1108
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_vm_bugreport) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_dump.c:1474
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_bug_for_fatal_signal+0x184) [0x7f1178f6a2f4] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/error.c:1167
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(sigsegv+0x4f) [0x7f117911ae4f] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/signal.c:977
+/usr/lib/libc.so.6(0x7f1178a3e6f0) [0x7f1178a3e6f0]
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_ec_thread_ptr+0x0) [0x7f11791d0ee6] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2236
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_ec_ractor_ptr) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2177
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_current_execution_context) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2254
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_current_ractor_raw) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2253
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_current_ractor) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2261
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_current_ractor) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_core.h:2259
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_ic_update) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_insnhelper.c:6818
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_vm_opt_getconstant_path) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_insnhelper.c:6852
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_exec_core+0x2425) [0x7f11791e87f5] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/insns.def:265
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_vm_exec+0x29a) [0x7f11791ecdea] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm.c:2926
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_call0_cc+0xed) [0x7f11791f3b6d] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_eval.c:101
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_funcallv_kw+0x5e) [0x7f11791f563e] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_eval.c:896
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_call_cfunc_with_frame_+0xfc) [0x7f11791cc48c] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_insnhelper.c:3906
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_sendish+0xb4) [0x7f11791e6519] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm_insnhelper.c:6351
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_exec_core) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/insns.def:911
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(vm_exec_loop+0xe2) [0x7f11791ed062] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm.c:2953
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(rb_vm_exec) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/vm.c:2932
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(thread_do_start_proc+0x31e) [0x7f11791846ee] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/thread.c:641
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(thread_do_start+0xa) [0x7f1179185195] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/thread.c:685
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(thread_start_func_2) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/thread.c:739
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(call_thread_start_func_2+0x26) [0x7f1179185a21] /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/thread_sched.c:1974
+~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1(co_start) /tmp/ruby-build.20261013234807.1917190.d3FNgk/ruby-4.1.0-preview1/thread_sched_mn.c:1111
+
+-- Other runtime information -----------------------------------------------
+
+* Loaded script: eh/eh.rb
+
+* Ruby Box: disabled
+* Loaded features:
+
+    0 enumerator.so
+    1 monitor.so
+    2 thread.rb
+    3 fiber.so
+    4 rational.so
+    5 complex.so
+    6 pathname.so
+    7 ruby2_keywords.rb
+    8 set.rb
+    9 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+   10 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+   11 io/wait.rb
+   12 io/wait.so
+   13 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/rbconfig.rb
+   14 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/defaults.rb
+   15 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/deprecate.rb
+   16 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/errors.rb
+   17 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/target_rbconfig.rb
+   18 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/win_platform.rb
+   19 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/util/atomic_file_writer.rb
+   20 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/unknown_command_spell_checker.rb
+   21 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/exceptions.rb
+   22 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/basic_specification.rb
+   23 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/stub_specification.rb
+   24 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/platform.rb
+   25 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/specification_record.rb
+   26 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/version.rb
+   27 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/requirement.rb
+   28 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/specification.rb
+   29 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/util.rb
+   30 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/content_address.rb
+   31 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/dependency.rb
+   32 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/core_ext/kernel_gem.rb
+   33 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/monitor.rb
+   34 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems.rb
+   35 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/bundled_gems.rb
+   36 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/rubygems/path_support.rb
+   37 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/version.rb
+   38 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/base.rb
+   39 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/formatter.rb
+   40 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight/core_ext.rb
+   41 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/error_highlight.rb
+   42 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/version.rb
+   43 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/core_ext/name_error.rb
+   44 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/levenshtein.rb
+   45 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/jaro_winkler.rb
+   46 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checker.rb
+   47 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/name_error_checkers/class_name_checker.rb
+   48 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/name_error_checkers/variable_name_checker.rb
+   49 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/name_error_checkers.rb
+   50 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/method_name_checker.rb
+   51 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/key_error_checker.rb
+   52 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/null_checker.rb
+   53 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/tree_spell_checker.rb
+   54 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/require_path_checker.rb
+   55 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/spell_checkers/pattern_key_name_checker.rb
+   56 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean/formatter.rb
+   57 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/did_you_mean.rb
+   58 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/syntax_suggest/core_ext.rb
+   59 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/syntax_suggest.rb
+   60 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/polyfill/byteindex.rb
+   61 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/polyfill/warn.rb
+   62 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/node.rb
+   63 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/node_ext.rb
+   64 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/parse_result.rb
+   65 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism/string_query.rb
+   66 ruby/prism/prism.so
+   67 ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/ruby/prism.rb
+
+* Process memory map:
+
+5556c80c2000-5556c80c3000 r--p 00000000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+5556c80c3000-5556c80c4000 r-xp 00001000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+5556c80c4000-5556c80c5000 r--p 00002000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+5556c80c5000-5556c80c6000 r--p 00002000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+5556c80c6000-5556c80c7000 rw-p 00003000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+5556efa35000-5556efe6a000 rw-p 00000000 00:00 0                          [heap]
+7f1110000000-7f1110426000 rw-p 00000000 00:00 0 
+7f1110426000-7f1114000000 ---p 00000000 00:00 0 
+7f1117832000-7f1118021000 rw-p 00000000 00:00 0 
+7f1118021000-7f111c000000 ---p 00000000 00:00 0 
+7f111c000000-7f111c0d4000 rw-p 00000000 00:00 0 
+7f111c0d4000-7f1120000000 ---p 00000000 00:00 0 
+7f1120000000-7f1120021000 rw-p 00000000 00:00 0 
+7f1120021000-7f1124000000 ---p 00000000 00:00 0 
+7f1124000000-7f1124021000 rw-p 00000000 00:00 0 
+7f1124021000-7f1128000000 ---p 00000000 00:00 0 
+7f1128000000-7f1128021000 rw-p 00000000 00:00 0 
+7f1128021000-7f112c000000 ---p 00000000 00:00 0 
+7f112c000000-7f112c021000 rw-p 00000000 00:00 0 
+7f112c021000-7f1130000000 ---p 00000000 00:00 0 
+7f1130000000-7f1130021000 rw-p 00000000 00:00 0 
+7f1130021000-7f1134000000 ---p 00000000 00:00 0 
+7f1134025000-7f1136000000 rw-p 00000000 00:00 0 
+7f1136000000-7f1137dd0000 r--s 00000000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f1137eff000-7f1138000000 rw-p 00000000 00:00 0 
+7f1138000000-7f1138412000 rw-p 00000000 00:00 0 
+7f1138412000-7f113c000000 ---p 00000000 00:00 0 
+7f113c120000-7f113c320000 rw-p 00000000 00:00 0                          [anon:Ruby:GC:default:page_pool_arena]
+7f113c600000-7f113c81d000 r--s 00000000 00:1d 18830813                   /usr/lib/libc.so.6
+7f113c8f5000-7f113c9f6000 rw-p 00000000 00:00 0 
+7f113cbf8000-7f113d0fd000 rw-p 00000000 00:00 0 
+7f113d1fe000-7f113d400000 rw-p 00000000 00:00 0 
+7f113d400000-7f113d501000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d501000-7f113d502000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d502000-7f113d602000 rw-p 00000000 00:00 0 
+7f113d602000-7f113d702000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d702000-7f113d703000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d703000-7f113d803000 rw-p 00000000 00:00 0 
+7f113d803000-7f113d903000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d903000-7f113d904000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113d904000-7f113da04000 rw-p 00000000 00:00 0 
+7f113da04000-7f113db04000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113db04000-7f113db05000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113db05000-7f113dc05000 rw-p 00000000 00:00 0 
+7f113dc05000-7f113dd05000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113dd05000-7f113dd06000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113dd06000-7f113de06000 rw-p 00000000 00:00 0 
+7f113de06000-7f113df06000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113df06000-7f113df07000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113df07000-7f113e007000 rw-p 00000000 00:00 0 
+7f113e007000-7f113e107000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113e107000-7f113e108000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113e108000-7f113e208000 rw-p 00000000 00:00 0 
+7f113e208000-7f113e308000 rw-p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113e308000-7f113e309000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f113e309000-7f113e409000 rw-p 00000000 00:00 0 
+7f113e409000-7f115d400000 ---p 00000000 00:00 0                          [anon:Ruby:nt_alloc_thread_stack_chunk]
+7f115d4af000-7f115d5b0000 rw-p 00000000 00:00 0 
+7f115d5b0000-7f115d7b0000 rw-p 00000000 00:00 0                          [anon:Ruby:GC:default:page_pool_arena]
+7f115d7bf000-7f115d7c0000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d7c0000-7f115d861000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d861000-7f115d862000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d862000-7f115d903000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d903000-7f115d904000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d904000-7f115d9a5000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d9a5000-7f115d9a6000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115d9a6000-7f115da47000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115da47000-7f115da48000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115da48000-7f115dae9000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dae9000-7f115daea000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115daea000-7f115db8b000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115db8b000-7f115db8c000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115db8c000-7f115dc2d000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dc2d000-7f115dc2e000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dc2e000-7f115dccf000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dccf000-7f115dcd0000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dcd0000-7f115dd71000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dd71000-7f115dd72000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dd72000-7f115de13000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115de13000-7f115de14000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115de14000-7f115deb5000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115deb5000-7f115deb6000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115deb6000-7f115df57000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115df57000-7f115df58000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115df58000-7f115dff9000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dff9000-7f115dffa000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115dffa000-7f115e09b000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e09b000-7f115e09c000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e09c000-7f115e13d000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e13d000-7f115e13e000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e13e000-7f115e1df000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e1df000-7f115e1e0000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e1e0000-7f115e281000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e281000-7f115e282000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e282000-7f115e323000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e323000-7f115e324000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e324000-7f115e3c5000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e3c5000-7f115e3c6000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e3c6000-7f115e467000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e467000-7f115e468000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e468000-7f115e509000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e509000-7f115e50a000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e50a000-7f115e5ab000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e5ab000-7f115e5ac000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e5ac000-7f115e64d000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e64d000-7f115e64e000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e64e000-7f115e6ef000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e6ef000-7f115e6f0000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e6f0000-7f115e791000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e791000-7f115e792000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e792000-7f115e833000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e833000-7f115e834000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e834000-7f115e8d5000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e8d5000-7f115e8d6000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e8d6000-7f115e977000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e977000-7f115e978000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115e978000-7f115ea19000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115ea19000-7f115ea1a000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115ea1a000-7f115eabb000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115eabb000-7f115eabc000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115eabc000-7f115eb5d000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115eb5d000-7f115eb5e000 ---p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115eb5e000-7f115ebff000 rw-p 00000000 00:00 0                          [anon:Ruby:fiber_pool_allocate_memory]
+7f115ebff000-7f115f400000 rw-p 00000000 00:00 0 
+7f115f400000-7f115f600000 rw-p 00000000 00:00 0                          [anon:Ruby:GC:default:page_pool_arena]
+7f115f600000-7f1177600000 rw-p 00000000 00:00 0                          [anon:Ruby:Init_default_shapes:shape_cache]
+7f1177600000-7f1178600000 rw-p 00000000 00:00 0                          [anon:Ruby:Init_default_shapes:shape_list]
+7f1178600000-7f11788ed000 r--p 00000000 00:1d 18852648                   /usr/lib/locale/locale-archive
+7f11788ff000-7f1178a00000 rw-p 00000000 00:00 0 
+7f1178a00000-7f1178a24000 r--p 00000000 00:1d 18830813                   /usr/lib/libc.so.6
+7f1178a24000-7f1178b9f000 r-xp 00024000 00:1d 18830813                   /usr/lib/libc.so.6
+7f1178b9f000-7f1178c15000 r--p 0019f000 00:1d 18830813                   /usr/lib/libc.so.6
+7f1178c15000-7f1178c19000 r--p 00214000 00:1d 18830813                   /usr/lib/libc.so.6
+7f1178c19000-7f1178c1b000 rw-p 00218000 00:1d 18830813                   /usr/lib/libc.so.6
+7f1178c1b000-7f1178c23000 rw-p 00000000 00:00 0 
+7f1178c64000-7f1178c9d000 r--s 00000000 00:1d 25596839                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby
+7f1178c9d000-7f1178c9e000 r--p 00000000 00:1d 25596948                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+7f1178c9e000-7f1178ca0000 r-xp 00001000 00:1d 25596948                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+7f1178ca0000-7f1178ca1000 r--p 00003000 00:1d 25596948                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+7f1178ca1000-7f1178ca2000 r--p 00003000 00:1d 25596948                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+7f1178ca2000-7f1178ca3000 rw-p 00004000 00:1d 25596948                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/trans/transdb.so
+7f1178ca3000-7f1178ca4000 r--p 00000000 00:1d 25596926                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+7f1178ca4000-7f1178ca5000 r-xp 00001000 00:1d 25596926                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+7f1178ca5000-7f1178ca6000 r--p 00002000 00:1d 25596926                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+7f1178ca6000-7f1178ca7000 r--p 00002000 00:1d 25596926                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+7f1178ca7000-7f1178ca8000 rw-p 00003000 00:1d 25596926                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/ruby/4.1.0+5/x86_64-linux/enc/encdb.so
+7f1178ca8000-7f1178cc9000 rw-p 00000000 00:00 0 
+7f1178cc9000-7f1178cd9000 r--p 00000000 00:1d 18830823                   /usr/lib/libm.so.6
+7f1178cd9000-7f1178d75000 r-xp 00010000 00:1d 18830823                   /usr/lib/libm.so.6
+7f1178d75000-7f1178dfe000 r--p 000ac000 00:1d 18830823                   /usr/lib/libm.so.6
+7f1178dfe000-7f1178dff000 r--p 00134000 00:1d 18830823                   /usr/lib/libm.so.6
+7f1178dff000-7f1178e00000 rw-p 00135000 00:1d 18830823                   /usr/lib/libm.so.6
+7f1178e00000-7f1178e5b000 r--p 00000000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f1178e5b000-7f11794f1000 r-xp 0005b000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f11794f1000-7f11796e9000 r--p 006f1000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f11796e9000-7f117970c000 r--p 008e8000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f117970c000-7f1179713000 rw-p 0090b000 00:1d 25596841                   ~/.local/share/mise/installs/ruby/4.1.0-preview1/lib/libruby.so.4.1.0
+7f1179713000-7f117972f000 rw-p 00000000 00:00 0 
+7f1179730000-7f1179731000 rw-p 00000000 00:00 0 
+7f1179731000-7f1179732000 rw-p 00000000 00:00 0 
+7f1179732000-7f1179734000 rw-p 00000000 00:00 0 
+7f1179734000-7f1179738000 r--p 00000000 00:1d 9487184                    /usr/lib/libgcc_s.so.1
+7f1179738000-7f117975b000 r-xp 00004000 00:1d 9487184                    /usr/lib/libgcc_s.so.1
+7f117975b000-7f117975f000 r--p 00027000 00:1d 9487184                    /usr/lib/libgcc_s.so.1
+7f117975f000-7f1179760000 r--p 0002b000 00:1d 9487184                    /usr/lib/libgcc_s.so.1
+7f1179760000-7f1179761000 rw-p 0002c000 00:1d 9487184                    /usr/lib/libgcc_s.so.1
+7f1179761000-7f1179763000 rw-p 00000000 00:00 0 
+7f1179763000-7f1179764000 r--p 00000000 00:1d 15801                      /usr/lib/libcrypt.so.2.0.0
+7f1179764000-7f1179778000 r-xp 00001000 00:1d 15801                      /usr/lib/libcrypt.so.2.0.0
+7f1179778000-7f117978c000 r--p 00015000 00:1d 15801                      /usr/lib/libcrypt.so.2.0.0
+7f117978c000-7f117978d000 r--p 00029000 00:1d 15801                      /usr/lib/libcrypt.so.2.0.0
+7f117978d000-7f117978e000 rw-p 0002a000 00:1d 15801                      /usr/lib/libcrypt.so.2.0.0
+7f117978e000-7f1179796000 rw-p 00000000 00:00 0 
+7f1179796000-7f11797a7000 r--p 00000000 00:1d 877718                     /usr/lib/libgmp.so.10.5.0
+7f11797a7000-7f1179825000 r-xp 00011000 00:1d 877718                     /usr/lib/libgmp.so.10.5.0
+7f1179825000-7f117983a000 r--p 0008f000 00:1d 877718                     /usr/lib/libgmp.so.10.5.0
+7f117983a000-7f117983c000 r--p 000a3000 00:1d 877718                     /usr/lib/libgmp.so.10.5.0
+7f117983c000-7f117983d000 rw-p 000a5000 00:1d 877718                     /usr/lib/libgmp.so.10.5.0
+7f117983d000-7f1179840000 r--p 00000000 00:1d 27289167                   /usr/lib/libz.so.1.3.2
+7f1179840000-7f1179850000 r-xp 00003000 00:1d 27289167                   /usr/lib/libz.so.1.3.2
+7f1179850000-7f1179856000 r--p 00013000 00:1d 27289167                   /usr/lib/libz.so.1.3.2
+7f1179856000-7f1179857000 r--p 00019000 00:1d 27289167                   /usr/lib/libz.so.1.3.2
+7f1179857000-7f1179858000 rw-p 0001a000 00:1d 27289167                   /usr/lib/libz.so.1.3.2
+7f1179858000-7f117985a000 rw-p 00000000 00:00 0 
+7f117985a000-7f1179881000 r--p 00000000 00:1d 27300756                   /etc/ld.so.cache
+7f1179881000-7f1179885000 r--p 00000000 00:00 0                          [vvar]
+7f1179885000-7f1179887000 r--p 00000000 00:00 0                          [vvar_vclock]
+7f1179887000-7f1179889000 r-xp 00000000 00:00 0                          [vdso]
+7f1179889000-7f117988a000 r--p 00000000 00:1d 18830804                   /usr/lib/ld-linux-x86-64.so.2
+7f117988a000-7f11798b7000 r-xp 00001000 00:1d 18830804                   /usr/lib/ld-linux-x86-64.so.2
+7f11798b7000-7f11798c6000 r--p 0002e000 00:1d 18830804                   /usr/lib/ld-linux-x86-64.so.2
+7f11798c6000-7f11798c8000 r--p 0003d000 00:1d 18830804                   /usr/lib/ld-linux-x86-64.so.2
+7f11798c8000-7f11798c9000 rw-p 0003f000 00:1d 18830804                   /usr/lib/ld-linux-x86-64.so.2
+7f11798c9000-7f11798ca000 rw-p 00000000 00:00 0 
+7ffc5a5a0000-7ffc5a5c3000 rw-p 00000000 00:00 0                          [stack]
+ffffffffff600000-ffffffffff601000 --xp 00000000 00:00 0                  [vsyscall]
+
+
+timeout: the monitored command dumped core

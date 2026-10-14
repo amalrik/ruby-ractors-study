@@ -1,0 +1,5 @@
+# Ruby 4.1 (preview até o lançamento final): na 4.0.x, Ractors com sockets
+# travam/corrompem memória e limitam a concorrência de I/O (report/REPORT.md § 8).
+# Para repetir as medições da 4.0.x: mise exec ruby@4.0.6 -- <comando>
+[tools]
+ruby = "4.1.0-preview1"

@@ -1,0 +1,5 @@
+~/Code/personal/concurency-poc/smtp_sessions/lib/session_server.rb:71: warning: IO::Buffer is experimental and both the Ruby and C interface may change in the future!
+~/Code/personal/concurency-poc/smtp_sessions/lib/session_server.rb:71: warning: IO::Buffer is experimental and both the Ruby and C interface may change in the future!
+~/Code/personal/concurency-poc/smtp_sessions/lib/session_server.rb:71: warning: IO::Buffer is experimental and both the Ruby and C interface may change in the future!
+~/Code/personal/concurency-poc/smtp_sessions/lib/session_server.rb:71: warning: IO::Buffer is experimental and both the Ruby and C interface may change in the future!
+session_server: {procs: 4, children_reported: 4, sessions: 2700, errors: 0, bytes: 11261088, max_concurrent: 23, cpu_s: 3.6597470000000003}

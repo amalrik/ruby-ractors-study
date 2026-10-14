@@ -1,0 +1,14 @@
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=direct        0.110s (ideal≈0.074s) threads nativas=65
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=direct        0.111s (ideal≈0.074s) threads nativas=68
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=direct        0.117s (ideal≈0.074s) threads nativas=65
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=receive-first 0.593s (ideal≈0.074s) threads nativas=10
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=receive-first 0.590s (ideal≈0.074s) threads nativas=10
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=receive-first 0.591s (ideal≈0.074s) threads nativas=10
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=prime         0.241s (ideal≈0.074s) threads nativas=24
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=prime         0.270s (ideal≈0.074s) threads nativas=22
+Ruby 4.0.6 RUBY_MAX_CPU=padrão modo=prime         0.242s (ideal≈0.074s) threads nativas=24
+Ruby 4.0.6 RUBY_MAX_CPU=64 modo=receive-first 0.144s (ideal≈0.074s) threads nativas=66
+Ruby 4.0.7 RUBY_MAX_CPU=padrão modo=direct        0.120s (ideal≈0.074s) threads nativas=67
+Ruby 4.0.7 RUBY_MAX_CPU=padrão modo=receive-first 0.588s (ideal≈0.074s) threads nativas=10
+Ruby 4.1.0 RUBY_MAX_CPU=padrão modo=direct        0.089s (ideal≈0.074s) threads nativas=19
+Ruby 4.1.0 RUBY_MAX_CPU=padrão modo=receive-first 0.104s (ideal≈0.074s) threads nativas=18

@@ -1,0 +1,63 @@
+{
+  "captured_at": "2026-10-14T13:37:33Z",
+  "os": "Omarchy",
+  "kernel": "Linux 7.2.8-5-omarchy-bore #1 SMP PREEMPT_DYNAMIC Wed, 07 Oct 2026 02:17:41 +0000 x86_64",
+  "cpu_model": "AMD Ryzen 7 5700U with Radeon Graphics",
+  "logical_cpus": 16,
+  "physical_cores": 8,
+  "mem_total_kb": 32216052,
+  "cpu_governor": "powersave",
+  "cpu_driver": "amd-pstate-epp",
+  "energy_perf_preference": "balance_performance",
+  "loadavg_at_start": "5.73 5.47 3.33 2/3286 281426",
+  "ruby_description": "ruby 4.1.0preview1 (2026-10-11 master 2d08b5f42f) +PRISM [x86_64-linux]",
+  "ruby_engine": "ruby",
+  "ruby_version": "4.1.0",
+  "ruby_bin": "~/.local/share/mise/installs/ruby/4.1.0-preview1/bin/ruby",
+  "ractor_api": {
+    "port": true,
+    "ractor_value": true,
+    "ractor_join": true,
+    "legacy_take_yield": false
+  },
+  "virtualization": "none",
+  "dmi_product": "VJFE59F11X-B1011H",
+  "dmi_vendor": "Positivo Bahia - VAIO",
+  "ruby_max_cpu_env": null,
+  "tcp_max_syn_backlog": "2048",
+  "tcp_tw_reuse": "2",
+  "ip_local_port_range": "32768-60999",
+  "somaxconn": "4096",
+  "nofile_limit": 524288,
+  "benchmark": "smtp_server_models",
+  "options": {
+    "engines": [
+      "threads",
+      "fibers",
+      "prefork_fibers",
+      "ractor_fibers"
+    ],
+    "server_workers": 4,
+    "workers": [
+      100,
+      1000
+    ],
+    "client_mode": "ractor_fibers",
+    "client_ractors": 4,
+    "delay_ms": 10,
+    "body_bytes": 4096,
+    "timeout_s": 15.0,
+    "warmup": 1,
+    "reps": 1,
+    "case_timeout": 600,
+    "rtt_probes": 20,
+    "remote": null,
+    "remote_dir": "concurency-poc",
+    "host": null,
+    "port": 2525
+  },
+  "role": "cliente/gerador de carga",
+  "ruby_flags": [],
+  "child_env": {},
+  "command": "smtp_sessions/bin/server_bench.rb"
+}

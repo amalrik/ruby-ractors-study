@@ -1,0 +1,6 @@
+ruby 4.0.6: ok=19 travou=1 abortou=0 de 20
+ruby 4.0.7: ok=20 travou=0 abortou=0 de 20
+ruby 4.1.0-preview1: ok=20 travou=0 abortou=0 de 20
+run_case ruby 4.0.6: ok=14 travou=6 abortou=0 de 20
+run_case ruby 4.0.7: ok=16 travou=4 abortou=0 de 20
+run_case ruby 4.1.0-preview1: ok=20 travou=0 abortou=0 de 20

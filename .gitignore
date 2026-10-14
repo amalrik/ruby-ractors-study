@@ -1,0 +1,6 @@
+.bundle/
+vendor/
+core
+core.*
+*.core
+.DS_Store
