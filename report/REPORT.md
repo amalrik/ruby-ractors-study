@@ -529,6 +529,24 @@ indefinidamente.
 
 ### 8.7 Regressão encontrada na 4.1.0-preview1 (2026-10-14)
 
+> **Atualização (2026-10-14, após a resposta do time do Ruby):** o crash só ocorre com o Ruby
+> compilado pelo **GCC 16**. As nossas builds da 4.1 usaram o GCC 16.2.1; as da 4.0.x eram binários
+> prontos compilados com o GCC 10. Por isso a comparação "4.0.x ok × 4.1 crash" abaixo está
+> **confundida pelo compilador**, e "regressão da 4.1" não é o termo exato.
+>
+> O ticket foi dividido em dois:
+> - [#22440](https://bugs.ruby-lang.org/issues/22440): o GCC 16 reaproveita o endereço TLS do
+>   contexto de execução depois de um *autoload* (`Ruby::Prism`) que pode retomar a thread em outra
+>   thread nativa sob o M:N. Correção: [ruby/ruby#19348](https://github.com/ruby/ruby/pull/19348).
+> - [#22442](https://bugs.ruby-lang.org/issues/22442): chamadas simultâneas pulavam o carregamento
+>   preguiçoso do error_highlight, por isso o trecho sumia. Correção:
+>   [ruby/ruby#19352](https://github.com/ruby/ruby/pull/19352).
+>
+> **[medido]** Com os dois patches sobre o master `3d168b1`, mesmo GCC 16, todos os reprodutores
+> deixaram de quebrar (10/10) e o trecho aparece nos dois Ractors (5/5). O bug do `Set` congelado
+> (`upstream/ruby-4.1-frozen-set-ractor-bug/`) **continua** com os patches: é outro problema,
+> ainda não relatado.
+
 **[medido]** `Exception#detailed_message` (que usa `error_highlight` →
 `RubyVM::AbstractSyntaxTree`) chamado em **2 ou mais Ractors ao mesmo tempo**
 causa `[BUG] Segmentation fault` na 4.1.0-preview1.
@@ -549,9 +567,9 @@ e tarefas que falham (`upstream/async-exceptions-in-ractors/repro.rb`):
 **Impacto e ação:** o servidor `ractor_fibers` desta POC captura todas as
 exceções no protocolo e guarda só a `message`, por isso não é afetado nas
 medições. Num servidor real, qualquer log de exceção dentro de Ractors pode
-derrubar o processo. **[recomendação]** Relatar ao bugs.ruby-lang.org
-**antes do lançamento da 4.1**: é uma regressão, com reprodutor
-determinístico e sem dependências.
+derrubar o processo. Relatado em 2026-10-14 como
+[Bug #22439](https://bugs.ruby-lang.org/issues/22439), confirmado também no
+master b709bdb3e3.
 
 ## 9. Modelos de SERVIDOR num VPS (Hetzner CPX42, 2026-10-14)
 

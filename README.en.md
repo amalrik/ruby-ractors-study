@@ -35,11 +35,22 @@ environment of each run are under `*/results/` and `remote_results/`.
     See [`smtp_sessions/bin/repro_ractor_session_hang.rb`](smtp_sessions/bin/repro_ractor_session_hang.rb),
     the gdb captures in `smtp_sessions/results/hang-*`, and
     `smtp_sessions/results/crash/abort-real-15.txt`.
-- **Regression in Ruby 4.1 (preview1 and master as of 2026-10-14).** Calling
+- **SEGV with Ractors + error_highlight on Ruby 4.1 built with GCC 16.** Calling
   `Exception#detailed_message` from 2+ Ractors at the same time segfaults inside
   `Thread::Backtrace::Location#syntax_tree` (`<internal:ast>:374` → `vm_ic_update` →
   `rb_current_ractor`). With one Ractor, `error_highlight` silently drops its snippet.
-  See [`upstream/ruby-4.1-detailed-message-ractors/`](upstream/ruby-4.1-detailed-message-ractors/).
+  Reported as [Bug #22439](https://bugs.ruby-lang.org/issues/22439); see
+  [`upstream/ruby-4.1-detailed-message-ractors/`](upstream/ruby-4.1-detailed-message-ractors/).
+  - **Update (2026-10-14):** Ruby core found that the crash needs **GCC 16** (my 4.1 builds used
+    GCC 16.2.1; the 4.0.x binaries I compared against were prebuilt with GCC 10, so my
+    "4.1 regression" label was confounded by the compiler). The ticket was split into
+    [#22440](https://bugs.ruby-lang.org/issues/22440): GCC 16 caches the TLS execution-context
+    address across an autoload that can resume the thread on another native thread under M:N.
+    The fix is [ruby/ruby#19348](https://github.com/ruby/ruby/pull/19348).
+    The other part is [#22442](https://bugs.ruby-lang.org/issues/22442): concurrent callers skipped
+    error_highlight's lazy load. The fix is [ruby/ruby#19352](https://github.com/ruby/ruby/pull/19352).
+    With both patches on master 3d168b1 (same GCC 16), every reproducer here runs clean (10/10)
+    and the snippet appears in every Ractor.
 - **Server models on a VPS** (Hetzner CPX42, 8 vCPU; 4 for the server, 4 for the load generator;
   Ruby 4.1.0-preview1; 10k concurrent SMTP-like sessions):
 

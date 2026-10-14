@@ -23,3 +23,27 @@ Verificado em 2026-10-14, Linux x86_64.
     (IsolationError/UnsafeError). Fechado em 2025.
 - Busca feita no bugs.ruby-lang.org e no GitHub ruby/ruby: nenhum relato do
   mesmo crash encontrado.
+
+## Atualização (2026-10-14): resposta do time do Ruby
+
+- O crash só reproduz com **GCC 16**. As nossas builds da 4.1 usaram o GCC 16.2.1; a 4.0.7 de
+  comparação era um binário pronto compilado com o GCC 10, então a coluna "4.0.x ok" acima mede
+  também a diferença de compilador.
+- O ticket foi dividido em dois:
+  - [#22440](https://bugs.ruby-lang.org/issues/22440): SEGV ao referenciar uma constante com
+    *autoload* a partir de vários Ractors. O GCC 16 guarda o endereço TLS de `ruby_current_ec`; o
+    escalonador M:N pode retomar a thread em outra thread nativa. PR
+    [ruby/ruby#19348](https://github.com/ruby/ruby/pull/19348).
+  - [#22442](https://bugs.ruby-lang.org/issues/22442): o carregamento preguiçoso do error_highlight
+    era pulado em threads e Ractors. PR [ruby/ruby#19352](https://github.com/ruby/ruby/pull/19352).
+- Teste com os dois patches sobre o master `3d168b1`, compilado com o GCC 16.2.1:
+
+  | Script | sem patches (b709bdb3e3) | com os 2 patches |
+  |---|---|---|
+  | reprodutor do #22440 (8 Ractors) | 10/10 SEGV | 10/10 ok |
+  | `repro.rb` (detailed_message, 2 Ractors) | 10/10 SEGV | 10/10 ok |
+  | `repro_syntax_tree.rb` (2 Ractors) | 1/10 SEGV | 10/10 ok |
+  | trecho do error_highlight nos 2 Ractors | não testável | 5/5 com trecho |
+
+- Correção do relato original: a frase "Also seen on Ubuntu 24.04, AMD EPYC Genoa" estava errada;
+  este reprodutor nunca rodou nessa máquina. A resposta enviada está em `REPLY_DRAFT.md`.
