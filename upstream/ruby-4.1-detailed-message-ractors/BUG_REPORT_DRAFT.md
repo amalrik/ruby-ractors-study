@@ -1,7 +1,7 @@
 <!--
 RASCUNHO para https://bugs.ruby-lang.org/projects/ruby-master/issues/new
 Tracker: Bug | Assunto: a linha "Subject" abaixo | ruby -v: a linha do 4.1.0dev
-Revise, ajuste o link do repositório e publique pela sua conta.
+Revise e publique pela sua conta.
 Este comentário não deve ser colado.
 -->
 
@@ -118,5 +118,5 @@ The full output is attached (`crash-output-master.txt`).
   Genoa (KVM).
 - These scripts come out of a benchmark study comparing threads, Ractors and Fibers on Ruby 4.0 and
   4.1. The code, raw results and other Ractor findings (I/O concurrency cap on 4.0.x, socket hangs
-  on 4.0.x) are public at: **<URL DO REPOSITÓRIO>**. The reproducers for this issue are in
+  on 4.0.x) are public at: https://github.com/amalrik/ruby-ractors-study. The reproducers for this issue are in
   `upstream/ruby-4.1-detailed-message-ractors/`.
